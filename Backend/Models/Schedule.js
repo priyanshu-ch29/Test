@@ -11,7 +11,7 @@ const ScheduleSchema = new mongoose.Schema({
     ref: "Student",
     required: true,
   },
-  date: { type: Date, required: true },
+  day: { type: String, required: true },
   timeSlot: { type: String, required: true },
   duration: { type: Number, required: true },
   status: { type: String, default: "Scheduled" },

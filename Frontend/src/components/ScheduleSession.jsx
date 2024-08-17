@@ -9,6 +9,7 @@ const ScheduleSession = ({ mentor, setSessionDetails, nextStep, prevStep }) => {
   useEffect(() => {
     fetchMentorAvailability(mentor._id).then((response) => {
       setAvailability(response.data);
+      // console.log(response.data);
     });
   }, [mentor]);
 
@@ -24,9 +25,24 @@ const ScheduleSession = ({ mentor, setSessionDetails, nextStep, prevStep }) => {
       </h2>
       <ul>
         {availability.map((slot, index) => (
-          <li key={index} onClick={() => setSelectedTimeSlot(slot)}>
-            {slot.time} - {slot.available ? "Available" : "Booked"}
-          </li>
+          <div key={index}>
+            <h3>{slot.day}</h3>
+            <ul>
+              {slot.timeSlots.map((timeSlot, index) => (
+                <li
+                  key={index}
+                  onClick={() =>
+                    !timeSlot.booked && setSelectedTimeSlot(timeSlot.time)
+                  }
+                  style={{
+                    cursor: timeSlot.booked ? "not-allowed" : "pointer",
+                  }}
+                >
+                  {timeSlot.time} - {timeSlot.booked ? "Booked" : "Available"}
+                </li>
+              ))}
+            </ul>
+          </div>
         ))}
       </ul>
       <label className=" text-2xl font-semibold">

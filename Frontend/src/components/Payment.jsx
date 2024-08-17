@@ -2,6 +2,7 @@ import React from "react";
 import { makePayment } from "../Api";
 
 const Payment = ({ sessionDetails, setPaymentDetails, nextStep, prevStep }) => {
+  // console.log(sessionDetails)
   const handlePayment = () => {
     const paymentData = {
       amount: sessionDetails.duration * 1000,
@@ -11,6 +12,7 @@ const Payment = ({ sessionDetails, setPaymentDetails, nextStep, prevStep }) => {
     };
     makePayment(paymentData).then((response) => {
       setPaymentDetails(response.data);
+      // console.log(response.data);
       nextStep();
     });
   };

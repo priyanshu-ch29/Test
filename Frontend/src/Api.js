@@ -7,7 +7,7 @@ export const fetchMentorsByInterest = (interest) => {
 };
 
 export const fetchMentorAvailability = (mentorId) => {
-  return axios.get(`${API_URL}/mentor/${mentorId}`);
+  return axios.get(`${API_URL}/mentors/${mentorId}`);
 };
 
 export const scheduleSession = (data) => {

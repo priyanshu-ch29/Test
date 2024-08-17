@@ -7,8 +7,6 @@ const mongoURL = process.env.MONGO_URI;
 // setup the MongoDB connection
 
 mongoose.connect(mongoURL, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
   dbName: "scheduler",
 });
 

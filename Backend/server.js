@@ -17,12 +17,6 @@ app.use("/api/mentors", mentorRoutes);
 app.use("/api/students", studentRoutes);
 app.use("/api/schedule", scheduleRoutes);
 
-// app.use(express.static(path.join(__dirname, "../Frontend/dist")));
-
-// app.get("*", (req, res) => {
-//   res.sendFile(path.resolve(__dirname, "Frontend", "dist", "index.html"));
-// });
-
 app.get("/", (req, res, next) => {
   res.status(200).json({
     message: "Sucess",
@@ -31,4 +25,10 @@ app.get("/", (req, res, next) => {
 
 app.listen(PORT, () => {
   console.log(`Listening to the port ${PORT}`);
+});
+
+app.use(express.static(path.join(__dirname, "../Frontend/dist")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "Frontend", "dist", "index.html"));
 });
